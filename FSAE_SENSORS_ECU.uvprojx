@@ -415,16 +415,6 @@
               <FilePath>.\lcd_task.h</FilePath>
             </File>
             <File>
-              <FileName>throttle_sensor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\throttle_sensor.c</FilePath>
-            </File>
-            <File>
-              <FileName>throttle_sensor.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\throttle_sensor.h</FilePath>
-            </File>
-            <File>
               <FileName>adc_api.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\adc_api.c</FilePath>
@@ -478,6 +468,16 @@
               <FileName>ustdlib.c</FileName>
               <FileType>1</FileType>
               <FilePath>D:\ti\TivaWare_C_Series-2.1.3.156\utils\ustdlib.c</FilePath>
+            </File>
+            <File>
+              <FileName>sensors.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\sensors.c</FilePath>
+            </File>
+            <File>
+              <FileName>sensors.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\sensors.h</FilePath>
             </File>
           </Files>
         </Group>

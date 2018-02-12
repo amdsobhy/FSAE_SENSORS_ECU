@@ -11,7 +11,7 @@
 #include "queue.h"
 #include "semphr.h"
 #include "lcd_i2c.h"
-#include "throttle_sensor.h"
+#include "sensors.h"
 
 //*****************************************************************************
 //
@@ -25,7 +25,7 @@
 // The item size and queue size for the LED message queue.
 //
 //*****************************************************************************
-#define ADC_ITEM_SIZE					 sizeof(uint32_t)*4				// four sensors reading
+#define ADC_ITEM_SIZE					 sizeof(uint32_t)*1				// four sensors reading
 #define ADC_QUEUE_SIZE				 1
 
 
@@ -42,18 +42,18 @@ extern xSemaphoreHandle g_pADCSemaphore;
 static void ADCTask(void *pvParameters)
 {
 
-	uint32_t ADCValues[4];
+	uint32_t ThrottleValue;
 	
 	while(1)
 		{
 			
 			xSemaphoreTake(g_pADCSemaphore, portMAX_DELAY);
-			ThrottleSensorGetValue(ADCValues);
+			ThrottleValue = ThrottleSensorGetValue();
 			xSemaphoreGive(g_pADCSemaphore);
 			
-			xQueueSend( g_pADCQueue, ADCValues, 0);
+			xQueueSend( g_pADCQueue, &ThrottleValue, 0);
 			
-			// ADC readings are captured at a frequency of 200kHz = every 5ms
+			// this task runs every 5ms
 			vTaskDelay(5);
 			
 		}
@@ -66,6 +66,7 @@ static void ADCTask(void *pvParameters)
 //*****************************************************************************
 uint32_t ADCTaskInit(void)
 {
+	
 		ThrottleSensorInit();
 		//
 		// Print the current loggling LED and frequency.
@@ -90,4 +91,5 @@ uint32_t ADCTaskInit(void)
 		// Success.
 		//
 		return(0);
+
 }

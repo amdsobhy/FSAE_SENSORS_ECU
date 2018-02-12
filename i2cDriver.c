@@ -35,6 +35,7 @@ SOFTWARE.
 #include "driverlib/uart.h"
 #include "driverlib/i2c.h"
 #include "utils/uartstdio.h"
+#include "driverlib/rom_map.h"
 
 /**************************************************************************
 * @brief  This function Initializes the I2C1 driver in TM4C123GXL using
@@ -47,7 +48,7 @@ void i2cDriverInit(void)
 		//
     // The I2C1 peripheral must be enabled before use.
     //
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C1);
+    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C1);
 
     //
     // For this example I2C0 is used with PortB[3:2].  The actual port and
@@ -56,15 +57,15 @@ void i2cDriverInit(void)
     // be used.
     // TODO: change this to whichever GPIO port you are using.
     //
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
 
     //
     // Configure the pin muxing for I2C1 functions on port A6 and A7.
     // This step is not necessary if your part does not support pin muxing.
     // TODO: change this to select the port/pin you are using.
     //
-    GPIOPinConfigure(GPIO_PA6_I2C1SCL);
-    GPIOPinConfigure(GPIO_PA7_I2C1SDA);
+    MAP_GPIOPinConfigure(GPIO_PA6_I2C1SCL);
+    MAP_GPIOPinConfigure(GPIO_PA7_I2C1SDA);
 		
 		//
     // Select the I2C function for these pins.  This function will also
@@ -73,15 +74,15 @@ void i2cDriverInit(void)
     // to see which functions are allocated per pin.
     // TODO: change this to select the port/pin you are using.
     //
-    GPIOPinTypeI2CSCL(GPIO_PORTA_BASE, GPIO_PIN_6);
-    GPIOPinTypeI2C(GPIO_PORTA_BASE, GPIO_PIN_7);
+    MAP_GPIOPinTypeI2CSCL(GPIO_PORTA_BASE, GPIO_PIN_6);
+    MAP_GPIOPinTypeI2C(GPIO_PORTA_BASE, GPIO_PIN_7);
 		//
     // Enable and initialize the I2C1 master module.  Use the system clock for
     // the I2C1 module.  The last parameter sets the I2C data transfer rate.
     // If false the data rate is set to 100kbps and if true the data rate will
     // be set to 400kbps.  For this example we will use a data rate of 100kbps.
     //
-    I2CMasterInitExpClk(I2C1_BASE, SysCtlClockGet(), false);
+    MAP_I2CMasterInitExpClk(I2C1_BASE, SysCtlClockGet(), false);
 		
 }
 
@@ -94,9 +95,9 @@ void i2cDriverInit(void)
 void i2cDriverWrite(uint8_t address, uint8_t data)
 {
 
-		I2CMasterSlaveAddrSet(I2C1_BASE, address, false);
-		I2CMasterDataPut(I2C1_BASE, data);
-		I2CMasterControl(I2C1_BASE, I2C_MASTER_CMD_SINGLE_SEND);
-		while(I2CMasterBusy(I2C1_BASE));	
+		MAP_I2CMasterSlaveAddrSet(I2C1_BASE, address, false);
+		MAP_I2CMasterDataPut(I2C1_BASE, data);
+		MAP_I2CMasterControl(I2C1_BASE, I2C_MASTER_CMD_SINGLE_SEND);
+		while(MAP_I2CMasterBusy(I2C1_BASE));	
 
 }

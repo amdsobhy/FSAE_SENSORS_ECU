@@ -17,7 +17,6 @@
 #include "ADC_task.h"
 
 
-
 //*****************************************************************************
 //
 // The mutex that protects concurrent access of UART from multiple tasks.
@@ -103,54 +102,36 @@ main(void)
 {
 		// set clock to 80MHz
 		SysCtlClockSet(SYSCTL_SYSDIV_2_5|SYSCTL_USE_PLL|SYSCTL_OSC_MAIN|SYSCTL_XTAL_16MHZ);
-    //
-    // Initialize the UART and configure it for 115,200, 8-N-1 operation.
-    //
+
     ConfigureUART();
 
-    //
-    // Print demo introduction.
-    //
     UARTprintf("\n\nTest ADC on FreeRTOS\n");
 
-    //
-    // Create a mutex to guard the UART.
-    //
     g_pUARTSemaphore = xSemaphoreCreateMutex();
 		g_pLCDSemaphore = xSemaphoreCreateMutex();
 		g_pADCSemaphore = xSemaphoreCreateMutex();
+	
     //
     // Create the LED task.
     //
     if(LCDTaskInit() != 0)
     {
-
         while(1)
         {
         }
     }
-
 		
     //
     // Create the ADC task.
     //
     if(ADCTaskInit() != 0)
     {
-
         while(1)
         {
-        }
+				}
     }
 
-    //
-    // Start the scheduler.  This should not return.
-    //
     vTaskStartScheduler();
-
-    //
-    // In case the scheduler returns for some reason, print an error and loop
-    // forever.
-    //
 
     while(1)
     {

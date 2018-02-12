@@ -14,3 +14,6 @@
 .\objects\adc_api.o: D:\ti\TivaWare_C_Series-2.1.3.156\driverlib/pwm.h
 .\objects\adc_api.o: D:\ti\TivaWare_C_Series-2.1.3.156\driverlib/sysctl.h
 .\objects\adc_api.o: D:\ti\TivaWare_C_Series-2.1.3.156\driverlib/udma.h
+.\objects\adc_api.o: D:\ti\TivaWare_C_Series-2.1.3.156\driverlib/timer.h
+.\objects\adc_api.o: D:\ti\TivaWare_C_Series-2.1.3.156\driverlib/rom.h
+.\objects\adc_api.o: D:\ti\TivaWare_C_Series-2.1.3.156\driverlib/rom_map.h

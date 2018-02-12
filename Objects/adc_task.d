@@ -21,4 +21,4 @@
 .\objects\adc_task.o: D:\rtos\FreeRTOSv9.0.0\FreeRTOS\Source\include\queue.h
 .\objects\adc_task.o: D:\rtos\FreeRTOSv9.0.0\FreeRTOS\Source\include\semphr.h
 .\objects\adc_task.o: lcd_i2c.h
-.\objects\adc_task.o: throttle_sensor.h
+.\objects\adc_task.o: sensors.h

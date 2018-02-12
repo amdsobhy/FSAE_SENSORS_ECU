@@ -13,3 +13,4 @@
 .\objects\i2cdriver.o: D:\ti\TivaWare_C_Series-2.1.3.156\driverlib/i2c.h
 .\objects\i2cdriver.o: D:\ti\TivaWare_C_Series-2.1.3.156\utils/uartstdio.h
 .\objects\i2cdriver.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\i2cdriver.o: D:\ti\TivaWare_C_Series-2.1.3.156\driverlib/rom_map.h
