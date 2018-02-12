@@ -1,0 +1,25 @@
+--cpu=Cortex-M4.fp
+".\objects\main.o"
+".\objects\i2cdriver.o"
+".\objects\lcd_i2c.o"
+".\objects\lcd_task.o"
+".\objects\throttle_sensor.o"
+".\objects\adc_api.o"
+".\objects\adc_task.o"
+".\objects\delay.o"
+".\objects\startup_rvmdk.o"
+".\objects\uartstdio.o"
+".\objects\ustdlib.o"
+"D:\ti\TivaWare_C_Series-2.1.3.156\driverlib\rvmdk\driverlib.lib"
+".\objects\tasks.o"
+".\objects\croutine.o"
+".\objects\event_groups.o"
+".\objects\list.o"
+".\objects\queue.o"
+".\objects\timers.o"
+".\objects\heap_2.o"
+".\objects\port.o"
+--library_type=microlib --strict --scatter ".\Objects\FSAE_SENSORS_ECU.sct"
+--entry Reset_Handler --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\FSAE_SENSORS_ECU.map" -o .\Objects\FSAE_SENSORS_ECU.axf
