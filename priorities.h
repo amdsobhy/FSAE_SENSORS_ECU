@@ -31,9 +31,9 @@
 //
 //*****************************************************************************
 
-// low numbers means low priority
-
-#define PRIORITY_LCD_TASK       2
+// higher number indicate higher priority
 #define PRIORITY_ADC_TASK       1
+#define PRIORITY_LCD_TASK       2
+
 
 #endif // __PRIORITIES_H__

@@ -25,7 +25,7 @@
 // The item size and queue size for the LED message queue.
 //
 //*****************************************************************************
-#define ADC_ITEM_SIZE					 sizeof(uint32_t)*1				// four sensors reading
+#define ADC_ITEM_SIZE					 sizeof(uint32_t)*1				// change to four sensors reading in the future
 #define ADC_QUEUE_SIZE				 1
 
 
@@ -74,7 +74,7 @@ uint32_t ADCTaskInit(void)
 		UARTprintf("\nADC task running!!");
 		
 		//
-		// Create a queue for sending messages to the LED task.
+		// Create a queue for sending messages to the LCD task.
 		//
 		g_pADCQueue = xQueueCreate(ADC_QUEUE_SIZE, ADC_ITEM_SIZE);
 

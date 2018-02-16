@@ -25,7 +25,7 @@
 // The item size and queue size for the LED message queue.
 //
 //*****************************************************************************
-#define LCD_ITEM_SIZE					 sizeof(uint8_t)*16
+#define LCD_ITEM_SIZE					 sizeof(uint32_t)*1 // change to four sensors reading in the future
 #define LCD_QUEUE_SIZE					1
 
 
@@ -60,14 +60,14 @@ static void LCDTask(void *pvParameters)
 {
 	
 	lcdI2cInit(0x3f,16,2,0);
-	int32_t adcReading[4];
+	int32_t adcReading;
 	char buffer[5];
 	
 	while(1)
 		{
 			
 			 xQueueReceive( g_pADCQueue, &( adcReading ), ( TickType_t ) 10 );
-			 itoascii(adcReading[0],buffer);
+			 itoascii(adcReading,buffer);
 			 xSemaphoreTake(g_pLCDSemaphore, portMAX_DELAY);
 			 lcdI2cPrint(buffer);
 			 xSemaphoreGive(g_pLCDSemaphore);
